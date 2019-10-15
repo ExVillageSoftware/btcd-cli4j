@@ -118,6 +118,9 @@ Great! Now you're ready to add some event listeners:
 		}
 	});
 	
+##Changes in 0.6.0 (from 0.5.8)
+Based on the bitcoin node version, the call to getInfo is replaced with getNetworkInfo to be backward compatabile
+	
 ##Examples
 
 For a short list of usage examples (mostly just sample API calls), see the [examples](https://github.com/priiduneemre/btcd-cli4j/tree/master/examples/src/main) module. 
