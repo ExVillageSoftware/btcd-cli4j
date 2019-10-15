@@ -55,9 +55,9 @@ public class BtcdClientImpl implements BtcdClient {
 	private ClientConfigurator configurator;
 	private JsonRpcClient rpcClient;
 
-
 	public BtcdClientImpl(Properties nodeConfig) throws BitcoindException, CommunicationException {
 		this(null, nodeConfig);
+		String usenew = nodeConfig.getProperty("node.bitcoind.useNewLib", "false");
 	}
 
 	public BtcdClientImpl(CloseableHttpClient httpProvider, Properties nodeConfig) 
@@ -65,7 +65,11 @@ public class BtcdClientImpl implements BtcdClient {
 		initialize();
 		rpcClient = new JsonRpcClientImpl(configurator.checkHttpProvider(httpProvider), 
 				configurator.checkNodeConfig(nodeConfig));
-		configurator.checkNodeVersion(getInfo().getVersion());
+		if (!configurator.useNewLib())
+			configurator.checkNodeVersion(getInfo().getVersion());
+		else
+			configurator.checkNodeVersion(getNetworkInfo().getVersion());
+
 		configurator.checkNodeHealth((Block)getBlock(getBestBlockHash(), true));
 	}
 

@@ -36,6 +36,10 @@ public abstract class AgentConfigurator {
 		this.nodeConfig = nodeConfig;
 		return nodeConfig;
 	}
+
+	public boolean useNewLib() {
+		return nodeConfig.getProperty(NodeProperties.RPC_USENEWLIB.getKey()).equalsIgnoreCase("True");
+	}
 	
 	public Properties toProperties(Object... values) {
 		Properties properties = new Properties();

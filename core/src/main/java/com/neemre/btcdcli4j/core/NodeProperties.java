@@ -19,8 +19,9 @@ public enum NodeProperties {
     HTTP_AUTH_SCHEME("node.bitcoind.http.auth_scheme", "Basic"),
     ALERT_PORT("node.bitcoind.notification.alert.port", "5158"),
     BLOCK_PORT("node.bitcoind.notification.block.port", "5159"),
-    WALLET_PORT("node.bitcoind.notification.wallet.port", "5160");
-	
+    WALLET_PORT("node.bitcoind.notification.wallet.port", "5160"),
+    RPC_USENEWLIB("node.bitcoind.rpc.usenewlib", "false");
+
     private final String key;
     private final String defaultValue;
 }

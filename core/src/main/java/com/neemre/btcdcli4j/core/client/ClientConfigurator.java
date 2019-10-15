@@ -33,7 +33,7 @@ public class ClientConfigurator extends AgentConfigurator {
 	public Set<NodeProperties> getRequiredProperties() {
 		return EnumSet.of(NodeProperties.RPC_PROTOCOL, NodeProperties.RPC_HOST, 
 				NodeProperties.RPC_PORT, NodeProperties.RPC_USER, NodeProperties.RPC_PASSWORD, 
-				NodeProperties.HTTP_AUTH_SCHEME);
+				NodeProperties.HTTP_AUTH_SCHEME, NodeProperties.RPC_USENEWLIB);
 	}
 	
 	public CloseableHttpClient checkHttpProvider(CloseableHttpClient httpProvider) {

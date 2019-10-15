@@ -2,6 +2,7 @@ package com.neemre.btcdcli4j.examples.client;
 
 import java.util.Properties;
 
+import com.neemre.btcdcli4j.core.domain.BlockChainInfo;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.neemre.btcdcli4j.core.client.BtcdClient;
@@ -17,10 +18,10 @@ public class BlockChainApi {
 		Properties nodeConfig = ResourceUtils.getNodeConfig();
 		BtcdClient client = new VerboseBtcdClientImpl(httpProvider, nodeConfig);
 
-		client.getBestBlockHash();
-		client.getBlock("00000000000000e8cf3d4fab91c642f5d5bb13339613aa915a42a7f1c91ab5ba");
-		client.getBlock("00000000000000e8cf3d4fab91c642f5d5bb13339613aa915a42a7f1c91ab5ba", true);
-		client.getBlockChainInfo();
+		String blockID = client.getBestBlockHash();
+		client.getBlock(blockID);
+		client.getBlock(blockID, true);
+		BlockChainInfo info = client.getBlockChainInfo();
 		client.getBlockCount();
 		client.getBlockHash(345168);
 		client.getChainTips();
